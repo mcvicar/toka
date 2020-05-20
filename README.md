@@ -45,39 +45,27 @@ Give examples
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Should be as simple as
 
 ```
-Give the example
+npm install
 ```
 
-And repeat
+Assuming you've got the aws cli and amplify set up
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Cool story bro!
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+No seriously there are some tests, mainly on the lambda side of things...
 
 ## Deployment
-
+Like are you really sure you want to do this?
 ```
 amplify publish
 ```
+Like really, really sure?
 
 ## Built With
 
@@ -87,11 +75,11 @@ amplify publish
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
 
 ## Versioning
 
-I would use [SemVer](http://semver.org/) for versioning if a production ready version was required.
+I would use [SemVer](http://semver.org/) for versioning if a production ready version was ever required.
 
 ## License
 
