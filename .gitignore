@@ -102,3 +102,36 @@ dist
 
 # TernJS port file
 .tern-port
+
+#amplify
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/mock-data
+amplify/backend/amplify-meta.json
+amplify/backend/awscloudformation
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplify-build-config.json
+amplify-gradle-config.json
+amplifyxc.config
+
+# Vue
+.DS_Store
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
