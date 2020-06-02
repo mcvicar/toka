@@ -10,8 +10,17 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.17.0",
+    "@editorjs/embed": "^2.3.1",
+    "@editorjs/header": "^2.4.1",
+    "@editorjs/list": "^1.4.0",
+    "@editorjs/quote": "^2.3.0",
     "core-js": "^3.6.4",
-    "vue": "^2.6.11"
+    "keyword-extractor": "0.0.19",
+    "text-readability": "^1.0.5",
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.2",
+    "write-good": "^1.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",

@@ -10,38 +10,40 @@ The CMS interface uses Vue.js and Amplify (Cognito, DynamoDB, Lambda, API Gatewa
 Things it does not do right now;
  * User's per site and ACLs
  * Publishing workflow
- * Preview of site content
- * File uploads
+ * Preview of a tenant site
+ * File/Media uploads
  
 Things that is does do;
  * Create a user and assign them to a "site"
  * Configure content types for a site
  * Configure content blocks for a content type
+ * Create content
+ * SEO and content readability analysis built in
  
 Some things I'd like it to do;
  * Have a DynamoDB stream to launch other configurable tasks based on content changes
- * SEO and content readability analysis built in
- * Dynamic concept groupings - think tagging but with a better editorially curated 
+ * Dynamic concept groupings - think tagging but with better editorially curated 
 
 ## Why the hell would you do this?
-I've been designing, building and managing content management systems, and sites that rely on a CMS for two over decades. 
+I've been architecting, building and managing content management systems, and sites that rely on a them, for two over decades. 
 
-There's a fair amount I've learnt in doing that, but there's some concepts I've not seen or not tried to build myself that I'm curious to give a go. Those ideas have been scratching around like a stone in my shoe, hence the [name](https://maoridictionary.co.nz/search?idiom=&phrase=&proverb=&loan=&histLoanWords=&keywords=toka). 
+There's a fair amount I've learnt in doing that, but there's some concepts I've not seen or not tried to build myself. The initial "thought experiment" was how to do content in DynamoDB using some of the [Advanced Design Patterns](https://www.youtube.com/watch?v=HaEPXoXVf2k) that Rick Houlihan advocates. 
+That idea (plus a few others) had been scratching around like a stone in my shoe for a few years, hence the [name](https://maoridictionary.co.nz/search?idiom=&phrase=&proverb=&loan=&histLoanWords=&keywords=toka), and it morphed into this.
 
 ### No really? What about using or extending [Drupal|Ghost|Etc] CMS?
 Like I said intellectual curiosity. 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Things you need to get up and running
 
-```
-Give examples
-```
+* An AWS account
+* An AWS IAM role/profile set-up that can push stuff through amplify / the cli
+* Node
 
 ### Installing
 
@@ -58,20 +60,20 @@ Assuming you've got the aws cli and amplify set up
 
 Cool story bro!
 
-No seriously there are some tests, mainly on the lambda side of things...
+No seriously there are some tests, mainly on the lambda side of things... I really should do more...
 
 ## Deployment
 Like are you really sure you want to do this?
 ```
 amplify publish
 ```
-Like really, really sure?
+Are you really, really sure?
 
 ## Built With
 
 * [Vue.js](https://vuejs.org/) - The web framework used for the CMS interface
 * [Amplify](https://github.com/aws-amplify/amplify-js) - Framework for AWS integration and services
-* [Sir Trevor](https://madebymany.github.io/sir-trevor-js/) - Used to manage the content blocks
+* [Editor.js](https://github.com/codex-team/editor.js) - Used to manage the content blocks
 
 ## Contributing
 
@@ -87,4 +89,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* To all the CMS's I've used before, and the blogging platforms that claim to be a CMS
+🎵 To all the CMSs I've used before
+🎵 Who traveled in and out my door
+🎵 I'm glad they came along
+🎵 I dedicate this repo
+🎵 To all the CMSs I've loved before (and the blogging platforms that claim to be a CMS)
