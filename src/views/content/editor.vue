@@ -7,19 +7,38 @@
     </div>
     <div id="statistics">
      <h2>Readability</h2>
-     <p>{{ statistics.readability }} Grade<p>
-     <p>{{ statistics.readingTime }} estimated reading</p>
+     <p>{{ statistics.readability }} Grade<br>
+     <span>Ideally it should be at 9</span>
+     </p>
+     <p>{{ statistics.readingTime }} min <br>
+     Estimated reading time</p>
+     <div id="keywords">
+       <h2>Keywords</h2>
+         <ul>
+           <li v-for="(index, keyword) in statistics.keywords" v-bind:key="index"><span v-bind:style="{ fontSize: '1.'+index+'rem' }">{{ keyword }}</span></li>
+         </ul>
+     </div>
     </div>
   </div>
   <div class="edit">
     <div id="seo">
-      <h2>SEO Stuff</h2>
+      <h2>SEO content</h2>
       <div class="og_image"></div>
-      <p><input v-model="title" placeholder="Title"></p>
-      <p><textarea v-model="description" placeholder="Add description"></textarea></p>
-      <p><input v-model="slug" placeholder="Add a slug"></p>
-      <p>Keyword extraction</p>
-      <p>Keyword scoring</p>
+      <p>
+      <label>Content title</label>
+      <input v-model="seo.title" placeholder="Title" type="text" @change="setSlug">
+      <span class="seo-title-counter">{{ seoTitleCount }}</span>
+      </p>
+      <p>
+      <label>Content description</label>
+      <textarea v-model="seo.description" placeholder="Add description"></textarea>
+      <span class="seo-description-counter">{{ seoDescriptionCount }}</span>
+      </p>
+      <p>
+      <label>Content slug</label>
+      <input v-model="seo.slug" placeholder="Add a slug" type="text">
+      <span class="seo-slug-preview">{{url}}/{{ seo.slug }}</span>
+      </p>
     </div>
     <div id="metapreview">
       <h2>SEO Preview</h2>
@@ -27,7 +46,7 @@
         <div class="card-seo-google">
           <span class="title">{{ title }}</span>
           <div class="url">
-            <span class="url-title">https://metatags.io/{{ slug }}</span>
+            <span class="url-title">{{ url }}/{{ seo.slug }}</span>
             <span class="url-arrow"></span>
           </div>
           <span class="description">
@@ -38,7 +57,7 @@
       <div class="card-seo-facebook">
         <div class="image" style="background-image: url(/placeholder.png)"></div>
         <div class="text">
-          <span class="link">metatags.io/{{ slug }}</span>
+          <span class="link">{{ url }}/{{ seo.slug }}</span>
           <div class="content">
             <div style="margin-top:5px">
               <div class="title">{{ title }}</div>
@@ -53,7 +72,7 @@
           <div class="text">
             <span class="title">{{ title }}</span>
             <span class="description">{{ description }}</span>
-            <span class="link">metatags.io/{{ slug }}</span>
+            <span class="link">{{ url }}/{{ seo.slug }}</span>
           </div>
         </div>
       <h3><span>Pinterest</span></h3>
@@ -62,7 +81,7 @@
           <img src="placeholder.png">
         </div>
       <div class="content">
-        <div class="title">{{ slug }}</div>
+        <div class="title">{{ seo.slug }}</div>
           <div class="dots">
             <div class="dot"></div>
             <div class="dot"></div>
@@ -76,7 +95,7 @@
             <div class="text">
               <div class="content">
                 <div class="title">{{ title }}</div>
-                <span class="link">metatags.io/{{ slug }}</span>
+                <span class="link">{{ url }}/{{ seo.slug }}</span>
               </div>
             </div>
         </div>
@@ -85,7 +104,7 @@
           <div class="bar"></div>
           <div class="content">
             <div class="flex">
-              <img class="favicon js-preview-favicon" src="favicon.ico"> <span class="link">https://metatags.io/{{ slug }}</span>
+              <img class="favicon js-preview-favicon" src="favicon.ico"> <span class="link">{{ url }}/{{ seo.slug }}</span>
             </div>
             <div class="title">{{ title }}</div>
               <span class="description">{{ description }}</span>
@@ -109,13 +128,26 @@ export default {
   data: function () {
     return {
       content: {},
-      title: null,
-      desription: null,
-      slug: null,
+      url: "http://www.example.com",
       editor: null,
       statistics: {
         readability: 0,
         readingTime: 0,
+      },
+      seo: {
+        title: "",
+        description: "",
+        slug: "",
+        max: {
+          slug: 255,
+          title: 60,
+          description: 160
+        }, 
+        min: {
+          slug: 1,
+          title: 20,
+          description: 50
+        }
       }
     }
   },
@@ -123,6 +155,7 @@ export default {
     this.editor = new EditorJS({
       holder: 'editorjs',
       placeholder: 'Let`s write an awesome story together!',
+      logLevel: 'ERROR',
       tools: { 
         header: Header, 
         list: List,
@@ -131,6 +164,17 @@ export default {
       },
       onChange: () => this.setStats()
     });
+  },
+  computed: {
+    seoSlugCount() {
+      return this.charactersLeft("slug");
+    },
+    seoTitleCount() {
+      return this.charactersLeft("title");
+    },
+    seoDescriptionCount() {
+      return this.charactersLeft("description");
+    }
   },
   methods: {
     save() {
@@ -141,10 +185,32 @@ export default {
       this.editor.save().then(function(saved) {
       context.statistics.readability = ScoringFactory.getReadingScore(saved);
       context.statistics.readingTime = ScoringFactory.getEstimatedReadingTime(saved);
+      context.statistics.keywords = ScoringFactory.getKeywords(saved);
       });
-    }
+    },
+    setSlug(evt) {
+      this.seo.slug = this.slugify(evt.target.value);
+    },
+    charactersLeft(counter) {
+      var char = this.seo[counter].length,
+      limit = this.seo.max[counter];
+      return (limit - char) + " / " + limit + " recommended characters remaining";
+    },
+    slugify(title) {
+      const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
+      const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------';
+      const p = new RegExp(a.split('').join('|'), 'g');
+
+      return title.toString().toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(p, c => b.charAt(a.indexOf(c)))
+        .replace(/&/g, '-and-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '')
+}
   },  
 }
+
 </script>
 <style>
 .edit {
@@ -171,6 +237,12 @@ export default {
   flex-basis: 100%;
   flex: 1;
 }
+#seo label {
+  display: block;
+}, 
+#seo .seo-title-counter, #seo .seo-description-counter, #seo .seo-slug-preview {
+  display: block;
+},
 .og_image {
     background-image: url("/placeholder.png");
     background-color:#63696c;
@@ -519,6 +591,7 @@ export default {
     width: 236px;
     border-radius: 8px;
     overflow: hidden;
+    background-color:#63696c;
 }
 card-seo-pinterest .image img {
     max-width: 100%;
@@ -613,5 +686,14 @@ card-seo-pinterest .image img {
     height: 189px;
     background-size: cover;
     background-position: 50%;
+}
+#keywords ul {
+    padding: 0;
+}
+#keywords li {
+    display: inline;
+}
+#keywords li:after {
+    content: " "
 }
 </style>
