@@ -1,0 +1,41 @@
+{
+    "paths": [
+        {
+            "name": "/toka",
+            "lambdaFunction": "tokaApi",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        }
+    ],
+    "resourceName": "toka",
+    "apiName": "toka",
+    "functionArns": [
+        {
+            "lambdaFunction": "tokaApi"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-toka-poc-193649-authRole",
+        "unAuthRoleName": "amplify-toka-poc-193649-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "tokaApi",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

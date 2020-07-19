@@ -1,0 +1,5 @@
+{
+    "tableName": "toka",
+    "partitionKeyName": "contentTypes",
+    "partitionKeyType": "S"
+}
