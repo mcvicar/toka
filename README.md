@@ -22,7 +22,7 @@ Things I'd like to add;
  * Preview of a tenant site
  * File/Media uploads 
  
-Some things I'd like it to do;
+Some things I'd like it to do eventually;
  * Real time collaboration on document editing using AppSync
  * Have a DynamoDB stream(s) to launch other configurable tasks based on content changes
  * Dynamic concept groupings - think tagging but with better editorially curated 
