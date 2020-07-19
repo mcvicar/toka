@@ -14,6 +14,23 @@ export const mainRouter = [
       component: () => import('../views/content/editor.vue'),
       name: 'contentEditor',
   },
+  {
+      path: '/admin',
+      component: () => import('../views/admin/index.vue'),
+      name: 'adminIndex',
+  },
+
+  {
+      path: '/admin/content-type',
+      component: () => import('../views/admin/contentTypes.vue'),
+      name: 'contentTypes',
+  },
+
+  {
+      path: '/admin/content-blocks',
+      component: () => import('../views/admin/contentBlocks.vue'),
+      name: 'contentBlocks',
+  },
 ];
 
 export default [
