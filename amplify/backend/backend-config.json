@@ -1,1 +1,51 @@
-{}
+{
+	"storage": {
+		"toka": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"function": {
+		"tokaApi": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "toka",
+					"attributes": [
+						"Name",
+						"Arn"
+					],
+					"attributeEnvMap": {
+						"Name": "TABLE_NAME",
+						"Arn": "TABLE_ARN"
+					}
+				}
+			]
+		}
+	},
+	"auth": {
+		"cognitocc5a86d8": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"api": {
+		"toka": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "tokaApi",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	}
+}

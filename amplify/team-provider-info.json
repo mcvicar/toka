@@ -10,6 +10,11 @@
             "StackName": "amplify-toka-poc-193649",
             "StackId": "arn:aws:cloudformation:eu-west-1:807531374737:stack/amplify-toka-poc-193649/def423a0-9ac8-11ea-b10a-026197c942fe",
             "AmplifyAppId": "d1np2tw8cyo8d0"
+        },
+        "categories": {
+            "auth": {
+                "cognitocc5a86d8": {}
+            }
         }
     }
 }
