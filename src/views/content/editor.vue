@@ -117,11 +117,11 @@
 </template>
 
 <script>
-import EditorJS from '@editorjs/editorjs'; 
-import Header from '@editorjs/header'; 
-import List from '@editorjs/list'; 
-import Embed from '@editorjs/embed'; 
-import Quote from '@editorjs/quote'; 
+import EditorJS from '@editorjs/editorjs';
+import Header from '@editorjs/header';
+import List from '@editorjs/list';
+import Embed from '@editorjs/embed';
+import Quote from '@editorjs/quote';
 import { ScoringFactory } from '../../services/scoringfactory'
 
 export default {
@@ -142,7 +142,7 @@ export default {
           slug: 255,
           title: 60,
           description: 160
-        }, 
+        },
         min: {
           slug: 1,
           title: 20,
@@ -156,8 +156,8 @@ export default {
       holder: 'editorjs',
       placeholder: 'Let`s write an awesome story together!',
       logLevel: 'ERROR',
-      tools: { 
-        header: Header, 
+      tools: {
+        header: Header,
         list: List,
         embed: Embed,
         quote: Quote
@@ -207,8 +207,8 @@ export default {
         .replace(/&/g, '-and-')
         .replace(/^-+/, '')
         .replace(/-+$/, '')
-}
-  },  
+    }
+  },
 }
 
 </script>
@@ -239,7 +239,7 @@ export default {
 }
 #seo label {
   display: block;
-}, 
+},
 #seo .seo-title-counter, #seo .seo-description-counter, #seo .seo-slug-preview {
   display: block;
 },
