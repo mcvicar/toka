@@ -21,7 +21,7 @@ export const mainRouter = [
   },
 
   {
-      path: '/admin/content-type',
+      path: '/admin/content-types',
       component: () => import('../views/admin/contentTypes.vue'),
       name: 'contentTypes',
   },
