@@ -39,6 +39,43 @@
       <input v-model="seo.slug" placeholder="Add a slug" type="text">
       <span class="seo-slug-preview">{{url}}/{{ seo.slug }}</span>
       </p>
+
+      <label>
+      <toggle-button v-model="sitemap.include"/> Include in XML Sitemaps
+      </label>
+
+      <h3>Robots meta</h3>
+      <ul>
+        <li>
+          <label>
+          <toggle-button v-model="robots.index"/> No Index
+          </label>
+        </li>
+        <li>
+          <label>
+          <toggle-button v-model="robots.archive"/> No Archive
+          </label>
+        </li>
+        <li>
+          <label>
+          <toggle-button v-model="robots.snippet"/> No Snippet
+          </label>
+        </li>
+        <li>
+          <label>
+          <toggle-button v-model="robots.follow"/> No Follow
+          </label>
+        </li>
+        <li>
+          <label>
+          <toggle-button v-model="robots.indexImage"/> No Image Index
+          </label>
+        </li>
+      </ul>
+
+      <h2>Publishing</h2>
+      <p>Published on</p>
+      <p>Available until</p>
     </div>
     <div id="metapreview">
       <h2>SEO Preview</h2>
@@ -122,9 +159,13 @@ import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import Embed from '@editorjs/embed';
 import Quote from '@editorjs/quote';
+import { ToggleButton } from 'vue-js-toggle-button'
 import { ScoringFactory } from '../../services/scoringfactory'
 
 export default {
+  components: {
+    ToggleButton
+  },
   data: function () {
     return {
       content: {},
@@ -148,6 +189,16 @@ export default {
           title: 20,
           description: 50
         }
+      },
+      sitemap: {
+        include: true
+      },
+      robots: {
+        index: false,
+        archive: false,
+        snippet: false,
+        follow: false,
+        indexImage: false
       }
     }
   },
@@ -237,9 +288,6 @@ export default {
   flex-basis: 100%;
   flex: 1;
 }
-#seo label {
-  display: block;
-},
 #seo .seo-title-counter, #seo .seo-description-counter, #seo .seo-slug-preview {
   display: block;
 },
