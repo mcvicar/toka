@@ -74,8 +74,15 @@
       </ul>
 
       <h2>Publishing</h2>
-      <p>Published on</p>
-      <p>Available until</p>
+      <p>
+      <label for="publishedOn">Published on</label>
+      <input type="datetime" v-model="publishedOn" input-id="publishedOn" />
+      </p>
+
+      <p>
+      <label for="availableUntil">Available until</label>
+      <input type="datetime" v-model="availableUntil" input-id="availableUntil" />
+      </p>
     </div>
     <div id="metapreview">
       <h2>SEO Preview</h2>
@@ -159,8 +166,8 @@ import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import Embed from '@editorjs/embed';
 import Quote from '@editorjs/quote';
-import { ToggleButton } from 'vue-js-toggle-button'
-import { ScoringFactory } from '../../services/scoringfactory'
+import { ToggleButton } from 'vue-js-toggle-button';
+import { ScoringFactory } from '../../services/scoringfactory';
 
 export default {
   components: {
@@ -175,6 +182,8 @@ export default {
         readability: 0,
         readingTime: 0,
       },
+      publishedOn: new Date().toISOString(),
+      availableUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 5)).toISOString(),
       seo: {
         title: "",
         description: "",
@@ -264,6 +273,7 @@ export default {
 
 </script>
 <style>
+
 .edit {
   background-color: #fff;
   margin-left:0;
