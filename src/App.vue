@@ -33,7 +33,7 @@ input[type="search"],
 input[type="time"],
 input[type="url"],
 textarea,
-select 
+select
 {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
@@ -78,7 +78,7 @@ input[type="button"]{
   border-bottom: 2px solid #30C29E;
   border-top-style: none;
   border-right-style: none;
-  border-left-style: none;  
+  border-left-style: none;
   color: #fff;
 }
 input[type="submit"]:hover,
