@@ -1,7 +1,7 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "API Gateway resource stack creation using Amplify CLI",
-    
+
     "Parameters": {
         "authRoleName": {
             "Type":  "String"
@@ -12,22 +12,22 @@
         "env": {
             "Type": "String"
         },
-    
-    
+
+
           "functiontokaApiName": {
             "Type": "String",
             "Default": "functiontokaApiName"
           },
-        
-          
+
+
           "functiontokaApiArn": {
             "Type": "String",
             "Default": "functiontokaApiArn"
           }
-        
-          
-          
-    
+
+
+
+
     },
      "Conditions": {
         "ShouldNotCreateEnvResources": {
@@ -40,7 +40,7 @@
         }
     },
     "Resources": {
-        
+
         "PolicyAPIGWtokaauth": {
             "DependsOn": [
               "toka"
@@ -60,9 +60,9 @@
                       "execute-api:Invoke"
                     ],
                     "Resource": [
-                    
-                    
-                    
+
+
+
                       {
                         "Fn::Join": [
                           "",
@@ -83,10 +83,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/POST",
@@ -114,10 +114,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/POST",
@@ -125,10 +125,10 @@
                           ]
                         ]
                       }
-                    
+
                       ,
-                    
-                    
+
+
                       {
                         "Fn::Join": [
                           "",
@@ -149,10 +149,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/GET",
@@ -180,10 +180,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/GET",
@@ -191,10 +191,10 @@
                           ]
                         ]
                       }
-                    
+
                       ,
-                    
-                    
+
+
                       {
                         "Fn::Join": [
                           "",
@@ -215,10 +215,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/PUT",
@@ -246,10 +246,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/PUT",
@@ -257,10 +257,10 @@
                           ]
                         ]
                       }
-                    
+
                       ,
-                    
-                    
+
+
                       {
                         "Fn::Join": [
                           "",
@@ -281,10 +281,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/PATCH",
@@ -312,10 +312,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/PATCH",
@@ -323,10 +323,10 @@
                           ]
                         ]
                       }
-                    
+
                       ,
-                    
-                    
+
+
                       {
                         "Fn::Join": [
                           "",
@@ -347,10 +347,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/DELETE",
@@ -378,10 +378,10 @@
                             {
                               "Fn::If": [
                                 "ShouldNotCreateEnvResources",
-                                "Prod", 
+                                "Prod",
                                 {
                                   "Ref": "env"
-                                } 
+                                }
                               ]
                             },
                               "/DELETE",
@@ -389,22 +389,22 @@
                           ]
                         ]
                       }
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
                     ]
                   }
                 ]
               }
             }
           },
-        
-        
-        
-        
-        
+
+
+
+
+
       "toka": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
@@ -442,14 +442,14 @@
                           }
                       ]
                   ]
-                } 
+                }
               ]
             },
             "schemes": [
               "https"
             ],
             "paths": {
-              
+
               "/toka": {
                 "options": {
                   "consumes": [
@@ -517,13 +517,13 @@
                       }
                     }
                   },
-                          
+
                     "security": [
                         {
                           "sigv4": []
                         }
                       ],
-                  
+
                   "x-amazon-apigateway-integration": {
                     "responses": {
                       "default": {
@@ -539,12 +539,12 @@
                               "Ref": "AWS::Region"
                             },
                             ":lambda:path/2015-03-31/functions/",
-                            
+
                             {
-                                
+
                                 "Ref": "functiontokaApiArn"
                             },
-                            
+
                             "/invocations"
                           ]
                         ]
@@ -622,13 +622,13 @@
                       }
                     }
                   },
-                          
+
                     "security": [
                         {
                           "sigv4": []
                         }
                       ],
-                  
+
                   "x-amazon-apigateway-integration": {
                     "responses": {
                       "default": {
@@ -644,12 +644,12 @@
                             "Ref": "AWS::Region"
                           },
                           ":lambda:path/2015-03-31/functions/",
-                          
+
                           {
-                            
+
                             "Ref": "functiontokaApiArn"
                           },
-                          
+
                           "/invocations"
                         ]
                       ]
@@ -659,8 +659,8 @@
                     "type": "aws_proxy"
                   }
                 }
-              }   
-              
+              }
+
             },
             "securityDefinitions": {
               "sigv4": {
@@ -698,20 +698,32 @@
             }
           },
           "FailOnWarnings": true
-        }
+        },
+        "Tags": [
+					{
+						"Key": "app",
+						"Value": "Toka"
+					},
+					{
+						"Key": "env",
+						"Value": {
+							"Ref": "env"
+						}
+					}
+				]
       },
 
-                  
-        
-        
+
+
+
         "functiontokaApiPermissiontoka": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
-                "FunctionName": 
+                "FunctionName":
                     {
                         "Ref":  "functiontokaApiName"
                     },
-                    
+
                     "Action": "lambda:InvokeFunction",
                 "Principal": "apigateway.amazonaws.com",
                 "SourceArn": {
@@ -736,9 +748,9 @@
                 }
             }
         },
-        
-        
-        
+
+
+
       "DeploymentAPIGWtoka": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
@@ -746,10 +758,10 @@
           "StageName": {
             "Fn::If": [
               "ShouldNotCreateEnvResources",
-              "Prod", 
+              "Prod",
               {
                 "Ref": "env"
-              } 
+              }
             ]
           },
           "RestApiId": {

@@ -5,22 +5,22 @@
         "env": {
             "Type": "String"
         },
-    
-    
-    
+
+
+
         "storagetokaName": {
             "Type": "String",
             "Default": "storagetokaName"
             },
-        
+
         "storagetokaArn": {
             "Type": "String",
             "Default": "storagetokaArn"
             }
-        
-    
-        
-    
+
+
+
+
     },
     "Conditions": {
         "ShouldNotCreateEnvResources": {
@@ -44,7 +44,7 @@
             "FunctionName": {
                 "Fn::If": [
                     "ShouldNotCreateEnvResources",
-                    "tokaApi", 
+                    "tokaApi",
                     {
 
                         "Fn::Join": [
@@ -57,7 +57,7 @@
                                 }
                             ]
                         ]
-                    }      
+                    }
                 ]
             },
             "Environment": {
@@ -65,15 +65,27 @@
                     "ENV": {
                         "Ref": "env"
                     },
-                    "REGION": { 
+                    "REGION": {
                         "Ref": "AWS::Region"
                     }
-                    
+
                 }
             },
             "Role": { "Fn::GetAtt" : ["LambdaExecutionRole", "Arn"] },
             "Runtime": "nodejs12.x",
-            "Timeout": "25"
+            "Timeout": "25",
+            "Tags": [
+    					{
+    						"Key": "app",
+    						"Value": "Toka"
+    					},
+    					{
+    						"Key": "env",
+    						"Value": {
+    							"Ref": "env"
+    						}
+    					}
+    				]
           }
         },
         "LambdaExecutionRole": {
@@ -82,7 +94,7 @@
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",
-                        "tokaLambdaRolec65f23bd", 
+                        "tokaLambdaRolec65f23bd",
                         {
 
                             "Fn::Join": [
@@ -95,7 +107,7 @@
                                     }
                                 ]
                             ]
-                        } 
+                        }
                     ]
                 },
                 "AssumeRolePolicyDocument": {
@@ -133,10 +145,10 @@
                             "Resource": { "Fn::Sub" : [ "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*", { "region": {"Ref": "AWS::Region"},  "account": {"Ref": "AWS::AccountId"}, "lambda": {"Ref": "LambdaFunction"}} ]}
                         },
                         {
-                            "Effect": "Allow", 
+                            "Effect": "Allow",
                             "Action": ["dynamodb:GetItem","dynamodb:Query","dynamodb:Scan","dynamodb:PutItem","dynamodb:UpdateItem","dynamodb:DeleteItem"],
                             "Resource": [
-                            
+
                                 { "Ref": "storagetokaArn" },
                                 {
                                     "Fn::Join": [
@@ -146,16 +158,16 @@
                                             "index/*"
                                         ]
                                     ]
-                                }      
-                            
+                                }
+
                             ]
                         }
-                        
+
                     ]
                 }
             }
         }
-        
+
     },
     "Outputs": {
         "Name": {
