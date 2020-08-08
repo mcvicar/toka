@@ -31,6 +31,11 @@ export const mainRouter = [
       component: () => import('../views/admin/contentBlocks.vue'),
       name: 'contentBlocks',
   },
+  {
+      path: '/',
+      component: () => import('../views/dashboard/dashboard.vue'),
+      name: 'contentDashboard',
+  },
 ];
 
 export default [
