@@ -1,6 +1,16 @@
 <template>
   <div id="app">
-      <router-view></router-view>
+    <header>
+        <nav>
+            <div><a href="/">Toka</a></div>
+            <ul>
+                <li><a href="#">Tenant Sites</a></li>
+                <li><a href="#">Available Countries</a></li>
+            <ul>
+        </nav>
+    </header>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -21,8 +31,55 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
+header {
+  height: 60px;
+  z-index: 10;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #78c0a8;
+  postion: fixed;
+  z-index: 10;
+}
+
+nav div {
+  color: white;
+  font-size: 2rem;
+  line-height: 60px;
+  position: absolute;
+  top: 0;
+  left: 2%;
+}
+
+nav div a {
+  text-decoration: none;
+  color:#fff;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0 2% auto 0;
+  padding-left: 0;
+  text-align: right;
+  max-width: 100%;
+}
+nav ul li {
+  display: inline-block;
+  line-height: 60px;
+  margin-left: 10px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #2c3e50;
+}
+
 
 input[type="text"],
 input[type="date"],
