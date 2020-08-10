@@ -33,6 +33,17 @@ export default {
   color: #2c3e50;
 }
 
+/**
+ * Picked colours from https://coolors.co/78c0a8-a72608-090c02-ffc07f-ffcf99
+**/
+:root {
+  --amplify-primary-color: #78c0a8;
+  --amplify-primary-tint: #FFCF99;
+  --amplify-primary-shade: #FFC07F;
+  --amplify-secondary-color: #2c3e50;
+  --amplify-red: #A72608;
+}
+
 header {
   height: 60px;
   z-index: 10;
