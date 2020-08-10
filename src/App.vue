@@ -4,8 +4,8 @@
         <nav>
             <div><a href="/">Toka</a></div>
             <ul>
-                <li><a href="#">Tenant Sites</a></li>
-                <li><a href="#">Available Countries</a></li>
+                <li><a href="#">Tenant Sites</a></li> <!-- Display as modal -->
+                <li><a href="#">Available Countries</a></li> <!-- Display as modal -->
             <ul>
         </nav>
     </header>

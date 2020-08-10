@@ -1,3 +1,23 @@
+import { Auth } from 'aws-amplify'
+
+const authGuard = async (to, from, next) => {
+  try {
+    await Auth.currentSession()
+    next()
+  } catch (error) {
+    next('/sign-in')
+  }
+}
+
+const loginAuthGuard = async (to, from, next) => {
+  try {
+    await Auth.currentSession()
+    next('/')
+  } catch (error) {
+    next()
+  }
+}
+
 export const page404 = {
     path: '/404',
     component: () => import('../views/error/404.vue')
@@ -10,6 +30,12 @@ export const page500 = {
 
 export const mainRouter = [
   {
+      path: '/auth',
+      component: () => import('../views/auth/cognito.vue'),
+      name: 'auth',
+      beforeEnter: loginAuthGuard
+  },
+  {
       path: '/editor',
       component: () => import('../views/content/editor.vue'),
       name: 'contentEditor',
@@ -18,6 +44,7 @@ export const mainRouter = [
       path: '/admin',
       component: () => import('../views/admin/index.vue'),
       name: 'adminIndex',
+      beforeEnter: authGuard
   },
 
   {
