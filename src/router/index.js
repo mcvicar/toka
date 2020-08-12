@@ -44,13 +44,17 @@ export const mainRouter = [
       path: '/admin',
       component: () => import('../views/admin/index.vue'),
       name: 'adminIndex',
-      beforeEnter: authGuard
   },
-
+  {
+      path: '/admin/sites/new',
+      component: () => import('../views/admin/sites.vue'),
+      name: 'adminIndex',
+  },
   {
       path: '/admin/content-types',
       component: () => import('../views/admin/contentTypes.vue'),
       name: 'contentTypes',
+      beforeEnter: authGuard
   },
 
   {
