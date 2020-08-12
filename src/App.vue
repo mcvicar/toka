@@ -91,7 +91,7 @@ nav ul li a {
   color: #2c3e50;
 }
 
-
+input[list="*"],
 input[type="text"],
 input[type="date"],
 input[type="datetime"],
@@ -119,6 +119,7 @@ select
   color: #555;
   font: 95% Arial, Helvetica, sans-serif;
 }
+input[list="*"],
 input[type="text"]:focus,
 input[type="date"]:focus,
 input[type="datetime"]:focus,
@@ -140,17 +141,26 @@ input[type="button"]{
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  width: 100%;
-  padding: 3%;
+  padding: 1.5%;
   background: #43D1AF;
   border-bottom: 2px solid #30C29E;
   border-top-style: none;
   border-right-style: none;
   border-left-style: none;
   color: #fff;
+  text-transform: uppercase;
+  margin-left:20px;
 }
 input[type="submit"]:hover,
 input[type="button"]:hover{
   background: #2EBC99;
+}
+
+#crud-bar {
+  border-top:8px solid #78C0A8;
+  text-align: right;
+  margin-top: 40px;
+  padding-top: 40px;
+  padding-right: 40px;
 }
 </style>

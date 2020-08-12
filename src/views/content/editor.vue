@@ -157,6 +157,9 @@
         </div>
     </div>
   </div>
+  <div id="crud-bar">
+    <input type="button" value="Cancel"> <input type="button" value="Create" >
+  </div>
 </div>
 </template>
 
