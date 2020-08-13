@@ -11,6 +11,7 @@
 import languageData from './languages.json';
 
 export default {
+    name: 'availableLanguages',
     props: {
         value: String,
         id: String,
