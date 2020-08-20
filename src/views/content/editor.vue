@@ -88,13 +88,13 @@
       <h2>SEO Preview</h2>
       <h3><span>Google</span></h3>
         <div class="card-seo-google">
-          <span class="title">{{ title }}</span>
+          <span class="title">{{ seo.title }}</span>
           <div class="url">
             <span class="url-title">{{ url }}/{{ seo.slug }}</span>
             <span class="url-arrow"></span>
           </div>
           <span class="description">
-            {{ description }}
+            {{ seo.description }}
           </span>
         </div>
       <h3><span>Facebook</span></h3>
@@ -104,9 +104,9 @@
           <span class="link">{{ url }}/{{ seo.slug }}</span>
           <div class="content">
             <div style="margin-top:5px">
-              <div class="title">{{ title }}</div>
+              <div class="title">{{ seo.title }}</div>
             </div>
-            <span class="description">{{ description }}</span>
+            <span class="description">{{ seo.description }}</span>
           </div>
         </div>
       </div>
@@ -114,8 +114,8 @@
         <div class="card-seo-twitter">
           <div class="image" style="background-image: url(/placeholder.png)"></div>
           <div class="text">
-            <span class="title">{{ title }}</span>
-            <span class="description">{{ description }}</span>
+            <span class="title">{{ seo.title }}</span>
+            <span class="description">{{ seo.description }}</span>
             <span class="link">{{ url }}/{{ seo.slug }}</span>
           </div>
         </div>
@@ -138,7 +138,7 @@
             <div class="image" style="background-image: url(/placeholder.png);"></div>
             <div class="text">
               <div class="content">
-                <div class="title">{{ title }}</div>
+                <div class="title">{{ seo.title }}</div>
                 <span class="link">{{ url }}/{{ seo.slug }}</span>
               </div>
             </div>
@@ -150,8 +150,8 @@
             <div class="flex">
               <img class="favicon js-preview-favicon" src="favicon.ico"> <span class="link">{{ url }}/{{ seo.slug }}</span>
             </div>
-            <div class="title">{{ title }}</div>
-              <span class="description">{{ description }}</span>
+            <div class="title">{{ seo.title }}</div>
+              <span class="description">{{ seo.description }}</span>
               <div class="image" style="background-image: url(placeholder.png); height: 187.2px;"></div>
           </div>
         </div>
@@ -286,6 +286,10 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.ce-block__content {
+  border: 1px solid #ccc;
+  padding-left: 4px;
+}
 #editor, #statistics, #metapreview, #seo {
   width:40%;
   margin:10px 5%;
@@ -303,7 +307,7 @@ export default {
 }
 #seo .seo-title-counter, #seo .seo-description-counter, #seo .seo-slug-preview {
   display: block;
-},
+}
 .og_image {
     background-image: url("/placeholder.png");
     background-color:#63696c;

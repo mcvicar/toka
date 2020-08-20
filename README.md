@@ -5,6 +5,8 @@ A tenant's content store is configurable by both "content types" and within thos
 
 The CMS interface uses Vue.js and Amplify (Cognito, DynamoDB, Lambda, AppSync, API Gateway, etc) and would in theory generate a read only REST API for a tenant site to call.
 
+![Example of the editor](example/basic-editing.gif)
+
 **I would not use this in a production environment right now**
 
 Things that is does do;
