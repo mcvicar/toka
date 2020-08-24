@@ -36,7 +36,8 @@ Some things I'd like it to do eventually;
 ## Why the hell would you do this?
 I've been architecting, building and managing content management systems, and sites that rely on a them, for over two decades.
 
-There's a fair amount I've learnt in doing that, but there's some concepts I've not seen or not tried to build myself. The initial "thought experiment" was how to do content in DynamoDB using some of the [Advanced Design Patterns](https://www.youtube.com/watch?v=HaEPXoXVf2k) that Rick Houlihan advocates.
+There's a fair amount I've learnt in doing that, but there's some concepts I've not seen or not tried to build myself. The initial "thought experiment" was how to do content in DynamoDB using some of the [Advanced Design Patterns](https://www.youtube.com/watch?v=HaEPXoXVf2k) that Rick Houlihan advocates. Take a look at the [Data Model](https://github.com/mcvicar/toka/wiki/Data-Model) to get an idea of the thinking behind it.
+
 That idea (plus a few others) had been scratching around like a stone in my shoe for a few years, hence the [name](https://maoridictionary.co.nz/search?idiom=&phrase=&proverb=&loan=&histLoanWords=&keywords=toka), and it morphed into this.
 
 ### No really? What about using or extending [Drupal|Ghost|Etc] CMS?
