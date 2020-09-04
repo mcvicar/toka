@@ -70,6 +70,8 @@ Assuming you've got the aws cli and amplify set up
 
 Cool story bro!
 
+![Node.js CI](https://github.com/mcvicar/toka/workflows/Node.js%20CI/badge.svg)
+
 No seriously there are some tests, mainly on the lambda side of things... I really should do more... or you could do a pull request with some if you're interested?
 
 ## Deployment
